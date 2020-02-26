@@ -5,21 +5,6 @@
 }
 
 <style>
-    .whiteBtn {
-        padding: 10px 20px;
-        background-color: white;
-        font-family: 'Playfair Display';
-        text-decoration: none !important;
-        color: black;
-        font-size: 1.5em;
-        transition: background-color 0.2s ease-out;
-    }
-
-    .whiteBtn:hover {
-        background-color: grey;
-        color: black;
-    }
-
     main>div {
         display: flex; 
         flex-flow: column nowrap; 
@@ -33,29 +18,27 @@
     <div style="background-color: #111;">
         <div class="carousel slide" id="myCarousel1" data-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel1" data-slide-to="1"></li>
-                <li data-target="#myCarousel1" data-slide-to="2"></li>
-                <li data-target="#myCarousel1" data-slide-to="3"></li>
+                @for (int i = 0; i < ViewBag.carouselList1.Count; i++)
+                {
+                    <li data-target="#myCarousel1" data-slide-to="@i"></li>
+                }
             </ol>
             <div class="carousel-inner">
-
-                <div class="carousel-item active">
-                    <img src="~/media/Home/carousel1/placeholder.jpg" alt="placeholder" />
-                </div>
-
-                <div class="carousel-item">
-                    <img src="~/media/Home/carousel1/placeholder.jpg" alt="placeholder" />
-                </div>
-
-                <div class="carousel-item">
-                    <img src="~/media/Home/carousel1/placeholder.jpg" alt="placeholder" />
-                </div>
-
-                <div class="carousel-item">
-                    <img src="~/media/Home/carousel1/placeholder.jpg" alt="placeholder" />
-                </div>
-
+                @for (int i = 0; i < ViewBag.carouselList1.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        <div class="carousel-item active">
+                            <img src="~/media/Home/carousel1/@ViewBag.carouselList1[i]" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="carousel-item">
+                            <img src="~/media/Home/carousel1/@ViewBag.carouselList1[i]" />
+                        </div>
+                    }
+                }
             </div>
             <a class="carousel-control-prev" href="#myCarousel1" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -91,29 +74,27 @@
         <h6>Successful Collaborations</h6>
         <div class="carousel slide" id="myCarousel2" data-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel2" data-slide-to="1"></li>
-                <li data-target="#myCarousel2" data-slide-to="2"></li>
-                <li data-target="#myCarousel2" data-slide-to="3"></li>
+                @for (int i = 0; i < ViewBag.carouselList2.Count; i++)
+                {
+                    <li data-target="#myCarousel2" data-slide-to="@i"></li>
+                }
             </ol>
             <div class="carousel-inner">
-
-                <div class="carousel-item active">
-                    <img src="~/media/Home/carousel2/placeholder.jpg" alt="placeholder" />
-                </div>
-
-                <div class="carousel-item">
-                    <img src="~/media/Home/carousel2/placeholder.jpg" alt="placeholder" />
-                </div>
-
-                <div class="carousel-item">
-                    <img src="~/media/Home/carousel2/placeholder.jpg" alt="placeholder" />
-                </div>
-
-                <div class="carousel-item">
-                    <img src="~/media/Home/carousel2/placeholder.jpg" alt="placeholder" />
-                </div>
-
+                @for (int i = 0; i < ViewBag.carouselList2.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        <div class="carousel-item active">
+                            <img src="~/media/Home/carousel2/@ViewBag.carouselList2[i]" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="carousel-item">
+                            <img src="~/media/Home/carousel2/@ViewBag.carouselList2[i]" />
+                        </div>
+                    }
+                }
             </div>
             <a class="carousel-control-prev" href="#myCarousel2" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

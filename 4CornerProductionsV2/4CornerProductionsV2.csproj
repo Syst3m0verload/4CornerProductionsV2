@@ -11,7 +11,6 @@
     <Folder Include="wwwroot\media\Home\carousel2\" />
     <Folder Include="wwwroot\media\More Info\" />
     <Folder Include="wwwroot\media\Portfolio\images\" />
-    <Folder Include="wwwroot\media\Portfolio\videos\" />
   </ItemGroup>
 
   <ItemGroup>

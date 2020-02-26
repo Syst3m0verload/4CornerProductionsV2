@@ -6,7 +6,7 @@
 
 <style>
     section {
-        margin: 100px 10%;
+        margin-top: 120px;
     }
 
     .sectionHeader {
@@ -17,6 +17,7 @@
         padding: 10px;
         width: 100%;
         color: white;
+        margin-bottom: 20px;
     }
 
     .container {
@@ -24,6 +25,9 @@
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
+        max-height: 500px;
+        transition: max-height 1.5s ease-out;
+        overflow: hidden;
     }
 
     .container>a {
@@ -73,6 +77,81 @@
   font-size: 1.5em;
 }
 
+    .button {
+        text-align: center;
+        color: white;
+        font-size: 1em;
+        margin: 50px auto;
+        padding: 10px 20px;
+        width: 200px;
+        height: 45px;
+        background: black;
+        border: 2px solid white;
+        overflow: hidden;
+        transition: all 0.5s;
+        outline: none !important;
+    }
+
+    .button:hover, .button:active 
+    {
+        text-decoration: none;
+        color: white;
+        background: grey;
+    }
+
+    .button span 
+    {
+        display: inline-block;
+        position: relative;
+        padding-right: 0;
+        transition: padding-right 0.5s;
+    }
+
+    .button span:after 
+    {
+        content: ' ';  
+        position: absolute;
+        top: 0;
+        right: -18px;
+        opacity: 0;
+        width: 10px;
+        height: 10px;
+        margin-top: -9px;
+        border: 3px solid #FFF;
+        border-top: none;
+        border-right: none;
+        transition: opacity 0.5s, top 0.5s, right 0.5s;
+        transform: rotate(-45deg);
+    }
+
+    #btnText1.less:after {
+        margin-top: -5px;
+        transform: rotate(135deg);
+    }
+
+    #btnText2.less:after {
+        margin-top: -5px;
+        transform: rotate(135deg);
+    }
+
+    .button:hover span, .button:active span 
+    {
+        padding-right: 30px;
+    }
+
+    .button:hover span:after, .button:active span:after 
+    {
+        transition: opacity 0.5s, top 0.5s, right 0.5s;
+        opacity: 1;
+        right: 0;
+        top: 50%;
+    }
+
+    .btnContainer {
+        display: flex; 
+        justify-content: center;
+    }
+
 </style>
 
 <!--https://dimsemenov.com/plugins/magnific-popup/-->
@@ -80,39 +159,28 @@
     <section>
         <div class="sectionHeader">Images</div>
         <div class="images container">
-            <a href="~/media/Portfolio/images/sample1.jpeg">
-                <img class="image" src="~/media/Portfolio/images/sample1.jpeg" alt="placeholder" />
-            </a>
-            <a class="test-popup-link" href="~/media/Portfolio/images/sample1.jpeg">
-                <img class="image" src="~/media/Portfolio/images/sample1.jpeg" alt="placeholder" />
-            </a>
-            <a class="test-popup-link" href="~/media/Portfolio/images/sample1.jpeg">
-                <img class="image" src="~/media/Portfolio/images/sample1.jpeg" alt="placeholder" />
-            </a>
-            <a class="test-popup-link" href="~/media/Portfolio/images/sample1.jpeg">
-                <img class="image" src="~/media/Portfolio/images/sample1.jpeg" alt="placeholder" />
-            </a>
-            <a class="test-popup-link" href="~/media/Portfolio/images/sample1.jpeg">
-                <img class="image" src="~/media/Portfolio/images/sample1.jpeg" alt="placeholder" />
-            </a>
-            <a class="test-popup-link" href="~/media/Portfolio/images/sample1.jpeg">
-                <img class="image" src="~/media/Portfolio/images/sample1.jpeg" alt="placeholder" />
-            </a>
-            <a class="test-popup-link" href="~/media/Portfolio/images/sample1.jpeg">
-                <img class="image" src="~/media/Portfolio/images/sample1.jpeg" alt="placeholder" />
-            </a>
-            <a class="test-popup-link" href="~/media/Portfolio/images/sample1.jpeg">
-                <img class="image" src="~/media/Portfolio/images/sample1.jpeg" alt="placeholder" />
-            </a>
+            @foreach (string image in ViewBag.images)
+            {
+                <a href="~/media/Portfolio/images/@image">
+                    <img class="image" src="~/media/Portfolio/images/@image" alt="image" />
+                </a>
+            }
+        </div>
+
+        <div class="btnContainer">
+            <button onclick="showPhotos()" class="button">
+                <span id="btnText1">Show More</span>
+            </button>
         </div>
 
     </section>
     <section>
         <div class="sectionHeader">Videos</div>
         <div class="videos container">
-            <!--To generate thumbnails properly, ensure last 11 characters are the video id.-->
-            <!--[params]title: description under video player   href: youtube URL-->
-            <a title="meow" href="https://www.youtube.com/watch?v=5dsGWM5XGdg"></a>
+            <!--To generate thumbnails, ensure last 11 characters are the video id-->
+            <!--title: description under video player-->
+            <!--href:  youtube URL-->
+            <a title="meow1" href="https://www.youtube.com/watch?v=5dsGWM5XGdg"></a>
             <a title="meow2" href="https://www.youtube.com/watch?v=cU5mlSWoL8E"></a>
             <a title="meow3" href="https://www.youtube.com/watch?v=eOcHz3Hf3UI"></a>
             <a title="meow4" href="https://www.youtube.com/watch?v=53W_ImgwcLs"></a>
@@ -120,6 +188,11 @@
             <a title="meow6" href="https://www.youtube.com/watch?v=o1YA_6tXs5E"></a>
             <a title="meow7" href="https://www.youtube.com/watch?v=DXUAyRRkI6k"></a>
             <a title="meow8" href="https://www.youtube.com/watch?v=cytJLvf-eVs"></a>
+        </div>
+        <div class="btnContainer">
+            <button onclick="showVideos()" class="button">
+                <span id="btnText2">Show More</span>
+            </button>
         </div>
     </section>
 </main>
@@ -165,10 +238,6 @@
                 closeOnBgClick: true,
                 showCloseBtn: true
             },
-		    zoom: {
-			    enabled: true,
-                duration: 300
-            },
             callbacks: {
                 markupParse: function(template, values, item) {
                  values.title = item.el.attr('title');
@@ -176,4 +245,31 @@
             }
         });
      });
+</script>
+<script>
+    // Show more buttons
+    function showPhotos() {
+            if (document.querySelector("#btnText1").innerHTML == "Show More") {
+                document.querySelector("#btnText1").innerHTML = "Show Less";
+                $(".images").css("max-height", "8000px");
+                $("#btnText1").addClass("less");
+            }
+            else {
+                document.querySelector("#btnText1").innerHTML = "Show More";
+                $(".images").css("max-height", "500px");
+                $("#btnText1").removeClass("less");
+            };
+        }
+        function showVideos() {
+            if (document.querySelector("#btnText2").innerHTML == "Show More") {
+                document.querySelector("#btnText2").innerHTML = "Show Less";
+                $(".videos").css("max-height", "8000px");
+                $("#btnText2").addClass("less");
+            }
+            else {
+                document.querySelector("#btnText2").innerHTML = "Show More";
+                $(".videos").css("max-height", "500px");
+                $("#btnText2").removeClass("less");
+            };
+        };
 </script>

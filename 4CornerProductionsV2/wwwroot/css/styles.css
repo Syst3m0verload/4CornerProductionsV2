@@ -20,6 +20,14 @@ h3 {
     font-family: 'Playfair Display';
     font-size: 75px;
     color: white;
+    margin: 50px;
+}
+
+h5 {
+    font-family: 'Playfair Display';
+    font-size: 40px;
+    color: white;
+    margin: 25px 0;
 }
 
 h6 {
@@ -31,5 +39,21 @@ h6 {
 p {
     font-family: Arial;
     color: white;
-    font-size: 1.5em;
+    font-size: 1.4em;
+}
+
+.whiteBtn {
+    padding: 10px 20px;
+    background-color: white;
+    font-family: 'Playfair Display';
+    text-decoration: none !important;
+    color: black;
+    font-size: 1.4em;
+    transition: background-color 0.2s ease-out;
+}
+
+.whiteBtn:hover {
+    background-color: grey;
+    color: black;
+    cursor: pointer;
 }
