@@ -1,0 +1,81 @@
+﻿
+<style>
+    @@keyframes slideRight {
+        0% {
+            transform: translateX(-50%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @@keyframes slideLeft {
+        0% {
+            transform: translateX(+30%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .navbar-brand {
+        animation: 1s ease-out 0s 1 slideLeft;
+    }
+
+    .nav-link {
+        font-family: 'Playfair Display';
+        font-size: 20px;
+        font-style: italic;
+        padding: 2px 0 !important;
+        border-top: 2px darkgrey solid;
+        border-bottom: 2px darkgrey solid;
+        transition: border-color ease-out 0.2s;
+        animation: 1s ease-out 0s 1 slideRight;
+    }
+
+    .current {
+        border-top: 2px darkorange solid;
+        border-bottom: 2px darkorange solid;
+        color: darkorange !important;
+    }
+
+    .nav-link:hover {
+        border-top: 2px white solid;
+        border-bottom: 2px white solid;
+    }
+
+    .nav-link:active {
+        border-top: 2px darkorange solid;
+        border-bottom: 2px darkorange solid;
+        color: darkorange !important;
+    }
+</style>
+
+<nav class="navbar navbar-dark fixed-top navbar-expand-sm" style="padding: 10px 10%;  background-color: black;">
+    <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+        <img src="~/media/Shared/logo.png" height="80" alt="">
+        4CornerProductions
+    </a>
+
+    <button class="navbar-toggler" type="button" onclick="toggleBackground()" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <li class="nav-item ml-5">
+                <a class="@("nav-link " + (ViewData["Title"] == "Home" ? "current" : ""))" href="@Url.Action("Index", "Home")">Home</a>
+            </li>
+            <li class="nav-item ml-5">
+                <a class="@("nav-link " + (ViewData["Title"] == "Portfolio" ? "current" : ""))" href="~/portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item ml-5">
+                <a class="@("nav-link " + (ViewData["Title"] == "More Info" ? "current" : ""))" href="~/info">More Info</a>
+            </li>
+        </ul>
+    </div>
+</nav>

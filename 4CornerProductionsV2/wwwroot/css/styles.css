@@ -1,0 +1,35 @@
+﻿body {
+    background-color: black !important;
+    margin: 0;
+}
+
+main {
+    margin-top: 60px;
+}
+
+.carousel, .carousel-inner {
+    position: relative;
+    width: 100%;
+}
+
+.carousel-item > img {
+    width: 100%;
+}
+
+h3 {
+    font-family: 'Playfair Display';
+    font-size: 75px;
+    color: white;
+}
+
+h6 {
+    font-family: 'Playfair Display';
+    font-size: 25px;
+    color: gray;
+}
+
+p {
+    font-family: Arial;
+    color: white;
+    font-size: 1.5em;
+}
