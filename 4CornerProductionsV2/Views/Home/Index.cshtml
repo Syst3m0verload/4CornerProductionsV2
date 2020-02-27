@@ -12,6 +12,21 @@
         padding: 100px 20%;
     }
 
+    #aboutText {
+        width: 70%; 
+        text-align: center;
+    }
+
+    @@media (max-width: 880px) {
+        main>div {
+            padding: 100px 20px;
+        }
+
+        #aboutText{
+            width: 100%;
+        }
+    }
+
 </style>
 
 <main>
@@ -54,7 +69,7 @@
     <div style="background-color: #222;">
         <h3>ABOUT</h3>
         <br />
-        <p style="width: 70%; text-align: center;">
+        <p id="aboutText">
             This is your About page. This space is a great opportunity to give a full background
             on who you are, what you do and what your site has to offer. Your users are genuinely
             interested in learning more about you, so don’t be afraid to share personal anecdotes
@@ -66,7 +81,7 @@
             crowd. Add a photo, gallery or video for even more engagement.
         </p>
         <br />
-        <a class="whiteBtn" href="~/info">Book Us</a>
+        <a class="whiteBtn" href="~/info#form">Book Us</a>
     </div>
 
     <div style="background-color: black;">

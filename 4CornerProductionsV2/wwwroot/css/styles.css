@@ -57,3 +57,13 @@ p {
     color: black;
     cursor: pointer;
 }
+@media (max-width: 880px) {
+    h3 {
+        font-size: 45px;
+        margin: 20px;
+    }
+
+    p {
+        font-size: 1em;
+    }
+}

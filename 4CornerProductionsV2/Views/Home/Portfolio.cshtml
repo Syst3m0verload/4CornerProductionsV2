@@ -152,6 +152,12 @@
         justify-content: center;
     }
 
+    @@media (max-width: 880px) {
+        .container>a {
+            width: 100%;
+            height: auto;
+        }
+    }
 </style>
 
 <!--https://dimsemenov.com/plugins/magnific-popup/-->
@@ -159,11 +165,12 @@
     <section>
         <div class="sectionHeader">Images</div>
         <div class="images container">
+            <!--For images, simply put them in wwwroot/media/Portfolio/images-->
             @foreach (string image in ViewBag.images)
             {
-                <a href="~/media/Portfolio/images/@image">
-                    <img class="image" src="~/media/Portfolio/images/@image" alt="image" />
-                </a>
+            <a href="~/media/Portfolio/images/@image">
+                <img class="image" src="~/media/Portfolio/images/@image" alt="image" />
+            </a>
             }
         </div>
 
@@ -177,17 +184,18 @@
     <section>
         <div class="sectionHeader">Videos</div>
         <div class="videos container">
-            <!--To generate thumbnails, ensure last 11 characters are the video id-->
-            <!--title: description under video player-->
+            <!--To generate thumbnails, ensure last 11 characters of URL are the video id-->
+            <!--title: description shown under video player-->
             <!--href:  youtube URL-->
-            <a title="meow1" href="https://www.youtube.com/watch?v=5dsGWM5XGdg"></a>
-            <a title="meow2" href="https://www.youtube.com/watch?v=cU5mlSWoL8E"></a>
-            <a title="meow3" href="https://www.youtube.com/watch?v=eOcHz3Hf3UI"></a>
-            <a title="meow4" href="https://www.youtube.com/watch?v=53W_ImgwcLs"></a>
-            <a title="meow5" href="https://www.youtube.com/watch?v=7na_-LfGfpE"></a>
-            <a title="meow6" href="https://www.youtube.com/watch?v=o1YA_6tXs5E"></a>
-            <a title="meow7" href="https://www.youtube.com/watch?v=DXUAyRRkI6k"></a>
-            <a title="meow8" href="https://www.youtube.com/watch?v=cytJLvf-eVs"></a>
+            <a title="description 1" href="https://www.youtube.com/watch?v=5dsGWM5XGdg"></a>
+            <a title="description 2" href="https://www.youtube.com/watch?v=cU5mlSWoL8E"></a>
+            <a title="description 3" href="https://www.youtube.com/watch?v=eOcHz3Hf3UI"></a>
+            <a title="description 4" href="https://www.youtube.com/watch?v=53W_ImgwcLs"></a>
+            <a title="description 5" href="https://www.youtube.com/watch?v=7na_-LfGfpE"></a>
+            <a title="description 6" href="https://www.youtube.com/watch?v=o1YA_6tXs5E"></a>
+            <a title="description 7" href="https://www.youtube.com/watch?v=DXUAyRRkI6k"></a>
+            <a title="description 8" href="https://www.youtube.com/watch?v=cytJLvf-eVs"></a>
+            <a title="description 9" href="https://www.youtube.com/watch?v=cytJLvf-eVs"></a>
         </div>
         <div class="btnContainer">
             <button onclick="showVideos()" class="button">
@@ -251,7 +259,7 @@
     function showPhotos() {
             if (document.querySelector("#btnText1").innerHTML == "Show More") {
                 document.querySelector("#btnText1").innerHTML = "Show Less";
-                $(".images").css("max-height", "8000px");
+                $(".images").css("max-height", "99999px");
                 $("#btnText1").addClass("less");
             }
             else {
@@ -263,7 +271,7 @@
         function showVideos() {
             if (document.querySelector("#btnText2").innerHTML == "Show More") {
                 document.querySelector("#btnText2").innerHTML = "Show Less";
-                $(".videos").css("max-height", "8000px");
+                $(".videos").css("max-height", "99999px");
                 $("#btnText2").addClass("less");
             }
             else {

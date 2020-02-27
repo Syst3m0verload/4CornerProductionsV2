@@ -8,42 +8,70 @@
     main {
         padding-top: 80px;
     }
+
     section {
         align-items: center;
         text-align: center;
-        padding: 100px 20%;
+        padding: 100px 200px;
+    }
+
+    #topImg {
+        width: 80%
     }
 
     #services {
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: row;
         justify-content: space-between;
     }
 
     #services > div {
         align-items: center;
-        width: 25%;
+        width: 30%;
     }
 
-    #services>div>img {
+    .imgContainer>img {
+        width: 100%;
+        max-width: 250px;
         height: 250px;
-        width: 250px;
-        overflow: hidden;
+        object-fit: cover;
     }
 
     form {
         text-align: left;
         margin: auto;
         width: 400px;
-        padding: 20px 25px 50px 25px;
+        padding: 20px 25px 60px 25px;
         -webkit-box-shadow: 2px 2px 5px 3px #000000; 
         box-shadow: 2px 2px 5px 3px #000000;
     }
+
+@@media (max-width: 880px) {
+    section {
+        padding: 100px 20px;
+    }
+
+    #topImg {
+        width: 100%
+    }
+
+    #services {
+        flex-flow: column;
+    }
+
+    #services > div {
+        width: 100%;
+    }
+
+    form {
+        width: 100%;
+    }
+}
 </style>
 
 <main>
     <section style="background-color: #111;">
-        <img src="~/media/More Info/additionalinfo.webp" alt="additional info"/>
+        <img id="topImg" src="~/media/More Info/additionalinfo.webp" alt="additional info"/>
         <h3>ADDITIONAL INFO</h3>
         <p>
             We wanted to give you a few details before the festivities begin. As 
@@ -65,35 +93,42 @@
     </section>
     <section id="services">
         <div>
-            <img src="~/media/More Info/service1.webp" />
+            <div class="imgContainer">
+                <img src="~/media/More Info/service1.webp" />
+            </div>
             <h5>SERVICE</h5>
             <p>Satisfaction Guaranteed</p>
         </div>
         <div>
-            <img src="~/media/More Info/service2.webp" />
+            <div class="imgContainer">
+                <img src="~/media/More Info/service2.webp" />
+            </div>
             <h5>SERVICE</h5>
-            <p>Committed to Qualityp</p>
+            <p>Committed to Quality</p>
         </div>
         <div>
-            <img src="~/media/More Info/service3.webp" />
+            <div class="imgContainer">
+                <img src="~/media/More Info/service3.webp" />
+            </div>
             <h5>SERVICE</h5>
             <p>Exceeding Expectations</p>
         </div>
     </section>
-    <section style="background-color: #222;">
-        <form>
+    <section style="background-color: #222;" id="form">
+        @model _4CornerProductionsV2.Models.Client
+        <form asp-action="newClient" method="post">
             <h5>Contact US</h5>
             <div class="form-group">
-                <input type="text" class="form-control form-control-lg" id="firstName" placeholder="First Name">
+                <input asp-for="Name" type="text" class="form-control form-control-lg" id="firstName" placeholder="First Name">
             </div>
             <div class="form-group">
-                <input type="email" class="form-control form-control-lg" id="email" placeholder="Email" required>
+                <input asp-for="Email" type="email" class="form-control form-control-lg" placeholder="Email" required>
             </div>
             <div class="form-group">
-                <input type="tel" class="form-control form-control-lg" id="phone" placeholder="Phone" required>
+                <input asp-for="Phone" type="tel" class="form-control form-control-lg" id="phone" placeholder="Phone" required>
             </div>
             <div class="form-group">
-                <select id="eventType" class="form-control form-control-lg" required>
+                <select asp-for="Event" id="eventType" class="form-control form-control-lg" required>
                     <option selected="" style="display:none" disabled="">Event Type</option>
                     <option value="Corporate Events">Corporate Events</option>
                     <option value="MultiCam Crew">MulltiCam Crew</option>
@@ -107,7 +142,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <textarea class="form-control" id="comments" rows="5" placeholder="Let us know what you need help with..."></textarea>
+                <textarea asp-for="Comment" class="form-control" id="comments" rows="5" placeholder="Let us know what you need help with..."></textarea>
             </div>
             <br />
             <div class="form-group">
